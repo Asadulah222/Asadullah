@@ -1,463 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Asadullah | Founder & CEO of AAQi Soft Solutions</title>
-
-  <!-- Boxicons CDN -->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-  <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-  <!-- Inline Full CSS -->
-  <style>
-    /*===== GOOGLE FONTS =====*/
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-    /*===== VARIABLES CSS =====*/
-    :root {
-      --header-height: 3rem;
-      --font-semi: 600;
-      --hue-color: 224;
-      --first-color: hsl(var(--hue-color), 89%, 60%);
-      --second-color: hsl(var(--hue-color), 56%, 12%);
-      --body-font: "Poppins", sans-serif;
-      --big-font-size: 2rem;
-      --h2-font-size: 1.25rem;
-      --normal-font-size: .938rem;
-      --smaller-font-size: .75rem;
-      --mb-2: 1rem;
-      --mb-4: 2rem;
-      --mb-5: 2.5rem;
-      --mb-6: 3rem;
-      --z-back: -10;
-      --z-fixed: 100;
-    }
-    @media screen and (min-width: 968px) {
-      :root {
-        --big-font-size: 3.5rem;
-        --h2-font-size: 2rem;
-        --normal-font-size: 1rem;
-        --smaller-font-size: .875rem;
-      }
-    }
-    *, ::before, ::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: var(--header-height) 0 0;
-      font-family: var(--body-font);
-      font-size: var(--normal-font-size);
-      color: var(--second-color);
-    }
-    h1, h2, p { margin: 0; }
-    ul { margin: 0; padding: 0; list-style: none; }
-    a { text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
-    
-    .section-title {
-      position: relative;
-      font-size: var(--h2-font-size);
-      color: var(--first-color);
-      margin-top: var(--mb-2);
-      margin-bottom: var(--mb-4);
-      text-align: center;
-    }
-    .section-title::after {
-      position: absolute;
-      content: "";
-      width: 64px;
-      height: .18rem;
-      left: 0; right: 0; margin: auto;
-      top: 2rem;
-      background-color: var(--first-color);
-    }
-    .section { padding: 3rem 0 2rem; }
-
-    .bd-grid {
-      max-width: 1024px;
-      display: grid;
-      margin: 0 var(--mb-2);
-    }
-
-    .l-header {
-      width: 100%;
-      position: fixed;
-      top: 0; left: 0;
-      z-index: var(--z-fixed);
-      background-color: #fff;
-      box-shadow: 0 1px 4px rgba(146,161,176,0.15);
-    }
-
-    .nav {
-      height: var(--header-height);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: var(--font-semi);
-    }
-    @media screen and (max-width: 767px) {
-      .nav__menu {
-        position: fixed;
-        top: var(--header-height);
-        right: -100%;
-        width: 80%; height: 100%;
-        padding: 2rem;
-        background-color: var(--second-color);
-        transition: .5s;
-      }
-      .nav__menu.show { right: 0; }
-    }
-    .nav__item { margin-bottom: var(--mb-4); }
-    .nav__link { color: var(--second-color); position: relative; }
-    .nav__link:hover::after,
-    .active-link::after {
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: .18rem;
-      left: 0; top: 2rem;
-      background-color: var(--first-color);
-    }
-    .nav__logo { color: var(--second-color); }
-    .nav__toggle {
-      color: var(--second-color);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    @media screen and (min-width: 768px) {
-      .nav__list { display: flex; }
-      .nav__item { margin-left: var(--mb-6); margin-bottom: 0; }
-      .nav__toggle { display: none; }
-    }
-
-    .home {
-      position: relative;
-      padding: 4rem 0 5rem;
-      row-gap: 5rem;
-    }
-    .home__data { align-self: center; }
-    .home__title {
-      font-size: var(--big-font-size);
-      margin-bottom: var(--mb-5);
-    }
-    .home__title-color { color: var(--first-color); }
-    .home__social {
-      display: flex;
-      flex-direction: column;
-    }
-    .home__social-icon {
-      font-size: 1.5rem;
-      margin-bottom: var(--mb-2);
-      color: var(--second-color);
-    }
-    .home__social-icon:hover { color: var(--first-color); }
-    .home__img {
-      position: absolute;
-      right: 0; bottom: 0;
-      width: 260px;
-    }
-    .home__blob { fill: var(--first-color); }
-    .home__blob-img { width: 360px; }
-
-    .button {
-      background-color: var(--first-color);
-      color: #fff;
-      padding: .75rem 2.5rem;
-      font-weight: var(--font-semi);
-      border-radius: .5rem;
-      transition: .3s;
-    }
-    .button:hover { box-shadow: 0px 10px 36px rgba(0,0,0,0.15); }
-
-    .about__container {
-      row-gap: 2rem;
-      text-align: center;
-    }
-    .about__img { justify-self: center; }
-    .about__img img {
-      width: 200px;
-      border-radius: .5rem;
-    }
-
-    .skills__container {
-      row-gap: 2rem;
-      text-align: center;
-    }
-    .skills__subtitle { margin-bottom: var(--mb-2); }
-    .skills__text { margin-bottom: var(--mb-4); }
-    .skills__data {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: var(--font-semi);
-      padding: .5rem 1rem;
-      margin-bottom: var(--mb-4);
-      border-radius: .5rem;
-      box-shadow: 0px 4px 25px rgba(14,36,49,0.15);
-      position: relative;
-    }
-    .skills__icon { font-size: 2rem; margin-right: var(--mb-2); color: var(--first-color); }
-    .skills__names { display: flex; align-items: center; }
-    .skills__bar {
-      width: 100%;
-      background-color: #e0e0e0;
-      height: 10px;
-      border-radius: 5px;
-      overflow: hidden;
-      margin-bottom: .5rem;
-    }
-    .skills__bar div {
-      height: 10px;
-      border-radius: 5px;
-      background-color: #007bff;
-      transition: width 2s ease-in-out;
-    }
-    .skills__img { border-radius: .5rem; }
-
-    .work__container { row-gap: 2rem; }
-    .work__img {
-      overflow: hidden;
-      border-radius: .5rem;
-      box-shadow: 0px 4px 25px rgba(14,36,49,0.15);
-    }
-    .work__img img { transition: 1s; }
-    .work__img img:hover { transform: scale(1.1); }
-
-    .contact__input {
-      width: 100%;
-      padding: 1rem;
-      font-weight: var(--font-semi);
-      border: 1.5px solid var(--second-color);
-      border-radius: .5rem;
-      margin-bottom: var(--mb-4);
-      outline: none;
-    }
-    .contact__button { font-size: var(--normal-font-size); outline: none; cursor: pointer; margin-left: auto; }
-
-    .footer {
-      background-color: var(--second-color);
-      color: #fff;
-      text-align: center;
-      font-weight: var(--font-semi);
-      padding: 2rem 0;
-    }
-    .footer__title { font-size: 2rem; margin-bottom: var(--mb-4); }
-    .footer__icon { font-size: 1.5rem; color: #fff; margin: 0 var(--mb-2); }
-    .footer__copy { font-size: var(--smaller-font-size); }
-
-    @media screen and (min-width: 576px) {
-      .home { padding: 4rem 0 2rem; }
-      .home__img { width: 300px; bottom: 25%; }
-      .home__social { flex-direction: row; align-self: flex-end; padding-bottom: 2.5rem; }
-      .home__social-icon { margin-right: var(--mb-4); margin-bottom: 0; }
-      .about__container { grid-template-columns: repeat(2,1fr); align-items: center; text-align: left; }
-      .skills__container { grid-template-columns: 0.7fr; justify-content: center; column-gap: 1rem; }
-      .work__container { grid-template-columns: repeat(2,1fr); column-gap: 2rem; padding-top: 2rem; }
-      .contact__form { width: 360px; padding-top: 2rem; }
-      .contact__container { justify-items: center; }
-    }
-    @media screen and (min-width: 768px) {
-      body { margin: 0; }
-      .section { padding: 4rem 0 3rem; }
-      .section-title { margin-bottom: var(--mb-6); }
-      .section-title::after { width: 80px; top: 3rem; }
-      .nav__toggle { display: none; }
-      .home { padding: 8rem 0 2rem; }
-      .home__img { width: 400px; bottom: 10%; }
-      .about__img img { width: 300px; }
-      .skills__container { grid-template-columns: repeat(2,1fr); column-gap: 2rem; text-align: left; align-items: center; }
-      .work__container { grid-template-columns: repeat(3,1fr); column-gap: 2rem; }
-    }
-    @media screen and (min-width: 992px) {
-      .bd-grid { margin: 0 auto; }
-      .home { padding: 10rem 0 2rem; }
-      .home__img { width: 450px; }
-    }
-
-    /* Timeline styles */
-    .timeline-container {
-      position: relative;
-      margin-top: 2rem;
-      padding-left: 2rem;
-      border-left: 2px solid #4caf50;
-    }
-    .timeline-item {
-      position: relative;
-      padding: 1rem 0;
-      margin-bottom: 2rem;
-    }
-    .timeline-dot {
-      position: absolute;
-      left: -9px;
-      top: 1.2rem;
-      width: 15px;
-      height: 15px;
-      background: #4caf50;
-      border-radius: 50%;
-    }
-    .timeline-content {
-      margin-left: 1rem;
-      max-width: 500px;
-    }
-    .timeline-content h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    .timeline-content p {
-      font-size: 0.95rem;
-      color: #555;
-      margin: 0;
-    }
-    .timeline-year {
-      position: absolute; right: 0; top: 1rem;
-      font-weight: 500;
-      color: #4caf50;
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER -->
-  <header class="l-header">
-    <nav class="nav bd-grid">
-      <div><a href="#" class="nav__logo">Muhammad Asadullah</a></div>
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-          <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-          <li class="nav__item"><a href="#education" class="nav__link">Education</a></li>
-          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-      </div>
-      <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
-    </nav>
-  </header>
-
-  <main class="l-main">
-    <!-- HOME -->
-    <section class="home bd-grid" id="home">
-      <div class="home__data">
-        <h1 class="home__title">
-          Hi,<br>I'm <span class="home__title-color">Asadullah</span><br>
-          <span id="animated-text" class="home__title-color"></span>
-        </h1>
-        <a href="#contact" class="button">Contact</a>
-      </div>
-      <div class="home__social">
-        <a href="https://www.linkedin.com/in/asad1756/" target="_blank" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-        <a href="#" class="home__social-icon"><i class='bx bxl-behance'></i></a>
-        <a href="#" class="home__social-icon"><i class='bx bxl-github'></i></a>
-      </div>
-      <div class="home__img">
-        <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg">
-          <mask id="mask0" mask-type="alpha">
-            <path d="M9.19024 145.964C..."/>
-          </mask>
-          <g mask="url(#mask0)">
-            <path d="M9.19024 145.964C..."/>
-            <image class="home__blob-img" x="50" y="60" href="https://images.unsplash.com/photo-1527980965255-d3b416303d12?fit=crop&w=500&q=80"/>
-          </g>
-        </svg>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about section" id="about">
-      <h2 class="section-title">About</h2>
-      <div class="about__container bd-grid">
-        <div class="about__img">
-          <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?fit=crop&w=400&q=80" alt="About Image">
-        </div>
-        <div>
-          <h2 class="about__subtitle">I'm Muhammad Asadullah</h2>
-          <p class="about__text">
-            I'm Muhammad Asadullah, a versatile digital professional passionate about technology, design, and content. As the founder and CEO...
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="skills section" id="skills">
-      <h2 class="section-title">Skills</h2>
-      <div class="skills__container bd-grid" data-aos="fade-up">
-        <div>
-          <h2 class="skills__subtitle">Professional Skills</h2>
-          <p class="skills__text">I combine technical expertise and creative insight...</p>
-          <!-- Skill bars -->
-          <div class="skills__data">
-            <div class="skills__names"><i class='bx bxl-html5 skills__icon'></i><span class="skills__name">HTML</span></div>
-            <div class="skills__bar"><div class="skills__html" style="width:75%"></div></div><span>75%</span>
+<!-- upto 2 directory depth-->
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Super Folio</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap" media="print" onload="this.media='all'"/>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap"/>
+    </noscript>
+    <link href="./css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
+    <link href="./css/bootstrap-icons/bootstrap-icons.css?ver=1.2.0" rel="stylesheet">
+    <link href="./css/bootstrap.min.css?ver=1.2.0" rel="stylesheet">
+    <link href="./css/aos.css?ver=1.2.0" rel="stylesheet">
+    <link href="./css/main.css?ver=1.2.0" rel="stylesheet">
+    <noscript>
+      <style type="text/css">
+        [data-aos] {
+            opacity: 1 !important;
+            transform: translate(0) scale(1) !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body id="top">
+    <header class="bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" id="header-nav" role="navigation">
+        <div class="container"><a class="link-dark navbar-brand site-title mb-0" href="#">Super Folio</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto me-2">
+              <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+              <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
           </div>
-          <!-- Add others similarly -->
         </div>
-        <div><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?fit=crop&w=500&q=80" alt="" class="skills__img"></div>
+      </nav>
+    </header>
+    <div class="page-content">
+      <div id="content">
+<header>
+  <div class="cover bg-light">
+    <div class="container px-3">
+      <div class="row">
+        <div class="col-lg-6 p-2"><img class="img-fluid" src="images/illustrations/hello3.svg" alt="hello"/></div>
+        <div class="col-lg-6">
+          <div class="mt-5">
+            <p class="lead text-uppercase mb-1">Hello!</p>
+            <h1 class="intro-title marker" data-aos="fade-left" data-aos-delay="50">I’m Walter Patterson</h1>
+            <p class="lead fw-normal mt-3" data-aos="fade-up" data-aos-delay="100">Web Developer & Mobile Application Developer</p>
+            <div class="social-nav" data-aos="fade-up" data-aos-delay="200">
+              <nav role="navigation">
+                <ul class="nav justify-content-left">
+                  <li class="nav-item"><a class="nav-link" href="https://twitter.com/templateflip" title="Twitter"><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/templateflip" title="Facebook"><i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/templateflip" title="Instagram"><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/" title="LinkedIn"><i class="fab fa-linkedin"></i><span class="menu-title sr-only">LinkedIn</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.behance.net/templateflip" title="Behance"><i class="fab fa-behance"></i><span class="menu-title sr-only">Behance</span></a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="mt-3" data-aos="fade-up" data-aos-delay="200"><a class="btn btn-primary shadow-sm mt-1 hover-effect" href="#contact">Get In Touch <i class="fas fa-arrow-right"></i></a></div>
+          </div>
+        </div>
       </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="education section" id="education">
-      <h2 class="section-title">Education</h2>
-      <div class="timeline-container bd-grid">
-        <div class="timeline-item" data-aos="fade-up"><div class="timeline-dot"></div><div class="timeline-content"><h3>Matriculation</h3><p>Completed Matric in 2022…</p></div><div class="timeline-year">2020–2022</div></div>
-        <div class="timeline-item" data-aos="fade-left"><div class="timeline-dot"></div><div class="timeline-content"><h3>Intermediate (ICS)</h3><p>Studied ICS…</p></div><div class="timeline-year">2022–2024</div></div>
-        <div class="timeline-item" data-aos="fade-right"><div class="timeline-dot"></div><div class="timeline-content"><h3>BS Computer Science</h3><p>Currently pursuing BSCS…</p></div><div class="timeline-year">2024–Continue</div></div>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section class="work section" id="work">
-      <h2 class="section-title">Work</h2>
-      <div class="work__container bd-grid">
-        <a href="#" class="work__img"><img src="https://source.unsplash.com/400x300/?tech,website" alt=""></a>
-        <a href="#" class="work__img"><img src="https://source.unsplash.com/400x300/?programming,design" alt=""></a>
-        <a href="#" class="work__img"><img src="https://source.unsplash.com/400x300/?seo,analytics" alt=""></a>
-        <a href="#" class="work__img"><img src="https://source.unsplash.com/400x300/?office,workstation" alt=""></a>
-        <a href="#" class="work__img"><img src="https://source.unsplash.com/400x300/?web,developer" alt=""></a>
-        <a href="#" class="work__img"><img src="https://source.unsplash.com/400x300/?content,writer" alt=""></a>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact section" id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact__container bd-grid">
-        <form action="#" class="contact__form">
-          <input type="text" placeholder="Name" class="contact__input" />
-          <input type="email" placeholder="Email" class="contact__input" />
-          <textarea placeholder="Message" class="contact__input" rows="10"></textarea>
-          <input type="submit" value="Send" class="contact__button button" />
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p class="footer__title">Muhammad Asadullah</p>
-    <div class="footer__social">
-      <a href="#" class="footer__icon"><i class='bx bxl-facebook'></i></a>
-      <a href="#" class="footer__icon"><i class='bx bxl-instagram'></i></a>
-      <a href="#" class="footer__icon"><i class='bx bxl-twitter'></i></a>
     </div>
-    <p class="footer__copy">&#169; AAQi Soft Solutions. All rights reserved</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-    document.getElementById("nav-toggle").onclick = () =>
-      document.getElementById("nav-menu").classList.toggle("show");
-
-    const roles = ["Web Designer","Affiliate Marketer","IT Consultant","WordPress Expert","Content Writer","Thumbnail Designer"];
-    let idx=0;
-    const el = document.getElementById("animated-text");
-    setInterval(()=>{ el.textContent = roles[idx]; idx=(idx+1)%roles.length; }, 2000);
-  </script>
-</body>
+  </div>
+  <div class="wave-bg"></div>
+</header>
+<div class="section pt-4 px-3 px-lg-4" id="about">
+  <div class="container-narrow">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="h4 my-2">Hello! I’m Walter Patterson.</h2>
+        <p>I am passionate about UI/UX design and Web Design. I am a skilled front-end developer and master of graphic design tools such as Photoshop and Sketch. I am a quick learner and a team worker that gets the job done. I can easily capitalize on low hanging fruits and quickly maximize timely deliverables for real-time schemas.</p>
+        <div class="row mt-3">
+          <div class="col-sm-2">
+            <div class="pb-1">Age:</div>
+          </div>
+          <div class="col-sm-10">
+            <div class="pb-1 fw-bolder">28</div>
+          </div>
+          <div class="col-sm-2">
+            <div class="pb-1">Email:</div>
+          </div>
+          <div class="col-sm-10">
+            <div class="pb-1 fw-bolder">walter@company.com</div>
+          </div>
+          <div class="col-sm-2">
+            <div class="pb-1">Skype:</div>
+          </div>
+          <div class="col-sm-10">
+            <div class="pb-1 fw-bolder">username@skype.com</div>
+          </div>
+          <div class="col-sm-2">
+            <div class="pb-1">Phone:</div>
+          </div>
+          <div class="col-sm-10">
+            <div class="pb-1 fw-bolder">+0718-111-0011</div>
+          </div>
+          <div class="col-sm-2">
+            <div class="pb-1">Address:</div>
+          </div>
+          <div class="col-sm-10">
+            <div class="pb-1 fw-bolder">New Delhi, India</div>
+          </div>
+          <div class="col-sm-2">
+            <div class="pb-1">Staus:</div>
+          </div>
+          <div class="col-sm-10">
+            <div class="pb-1 fw-bolder">Available</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 offset-md-1" data-aos="fade-left" data-aos-delay="100"><img class="avatar img-fluid mt-2" src="images/avatar.jpg" width="400" height="400" alt="Walter Patterson"/></div>
+    </div>
+  </div>
+</div>
+<div class="section px-3 px-lg-4 pt-5" id="services">
+  <div class="container-narrow">
+    <div class="text-center mb-5">
+      <h2 class="marker marker-center">My Services</h2>
+    </div>
+    <div class="text-center">
+      <p class="mx-auto mb-3" style="max-width:600px"> I offer services fit for any website or app. I can quickly maximize timely deliverables for real-time schemas.</p>
+    </div>
+    <div class="row py-3">
+      <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="100"><img class="mb-2" src="images/services/web-design.svg" width="96" height="96" alt="web design"/>
+        <div class="h5">Web Design</div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="200"><img class="mb-2" src="images/services/graphic-design.svg" width="96" height="96" alt="graphic design"/>
+        <div class="h5">Graphic Design</div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="300"><img class="mb-2" src="images/services/ui-ux.svg" width="96" height="96" alt="ui-ux"/>
+        <div class="h5">UI/UX</div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="400"><img class="mb-2" src="images/services/app-development.svg" width="96" height="96" alt="app development"/>
+        <div class="h5">App Development</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section px-3 px-lg-4 pt-5" id="skills">
+  <div class="container-narrow">
+    <div class="text-center mb-5">
+      <h2 class="marker marker-center">My Skills</h2>
+    </div>
+    <div class="text-center">
+      <p class="mx-auto mb-3" style="max-width:600px">I am a quick learner and specialize in multitude of skills required for Web Application Development and Product Design</p>
+    </div>
+    <div class="bg-light p-3">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">HTML5</span><span>90%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100" data-aos-anchor=".skills-section" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">CSS3</span><span>90%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="200" data-aos-anchor=".skills-section" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">JavaScript</span><span>80%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="300" data-aos-anchor=".skills-section" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">React</span><span>75%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="300" data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 offset-md-2">
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">PHP</span><span>70%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="400" data-aos-anchor=".skills-section" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">WordPress</span><span>70%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="500" data-aos-anchor=".skills-section" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">MySQL</span><span>60%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="600" data-aos-anchor=".skills-section" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="py-1">
+            <div class="d-flex text-small fw-bolder"><span class="me-auto">Photoshop</span><span>60%</span></div>
+            <div class="progress my-1">
+              <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="600" data-aos-anchor=".skills-section" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section px-2 px-lg-4 pt-5" id="portfolio">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="marker marker-center">Portfolio </h2>
+    </div>
+    <div class="grid bp-gallery pb-3" data-aos="zoom-in-up" data-aos-delay="100">
+      <div class="grid-sizer"></div>
+      <div class="grid-item"><a href="https://dribbble.com">
+          <figure class="portfolio-item"><img src="images/portfolio/1-small.png" data-bp="images/portfolio/1.jpg"/>
+            <figcaption>
+              <h4 class="h5 mb-0">Web Design</h4>
+              <div>Dribbble.com</div>
+            </figcaption>
+          </figure></a></div>
+      <div class="grid-item"><a href="https://github.com">
+          <figure class="portfolio-item"><img src="images/portfolio/2-small.png" data-bp="images/portfolio/2.jpg" data-caption="Example of an optional caption."/>
+            <figcaption> 
+              <h4 class="h5 mb-0">Web Development</h4>
+              <div>GitHub.com</div>
+            </figcaption>
+          </figure></a></div>
+      <div class="grid-item"><a href="https://soundcloud.com/">
+          <figure class="portfolio-item"><img src="images/portfolio/3-small.png" data-bp="images/portfolio/3.jpg" data-caption="Example of an optional caption."/>
+            <figcaption> 
+              <h4 class="h5 mb-0">Audio Mixing</h4>
+              <div>Soundcloud.com</div>
+            </figcaption>
+          </figure></a></div>
+      <div class="grid-item"><a href="https://www.adobe.com/">
+          <figure class="portfolio-item"><img src="images/portfolio/4-small.png" data-bp="images/portfolio/4.jpg"/>
+            <figcaption>
+              <h4 class="h5 mb-0">Video Editing</h4>
+              <div>Adobe After Effects</div>
+            </figcaption>
+          </figure></a></div>
+      <div class="grid-item"><a href="https://www.adobe.com/">
+          <figure class="portfolio-item"><img src="images/portfolio/5-small.png" data-bp="images/portfolio/5.jpg"/>
+            <figcaption>
+              <h4 class="h5 mb-0">Photography</h4>
+              <div>Adobe Photoshop</div>
+            </figcaption>
+          </figure></a></div>
+      <div class="grid-item"><a href="https://www.android.com/">
+          <figure class="portfolio-item"><img src="images/portfolio/6-small.png" data-bp="images/portfolio/6.jpg"/>
+            <figcaption>
+              <h4 class="h5 mb-0">App Development</h4>
+              <div>Android</div>
+            </figcaption>
+          </figure></a></div>
+      <div class="grid-item"><a href="https://flutter.dev/">
+          <figure class="portfolio-item"><img src="images/portfolio/7-small.png" data-bp="images/portfolio/7.jpg"/>
+            <figcaption>
+              <h4 class="h5 mb-0">App Design</h4>
+              <div>Flutter</div>
+            </figcaption>
+          </figure></a></div>
+      <div class="grid-item"><a href="https://flutter.dev/">
+          <figure class="portfolio-item"><img src="images/portfolio/8-small.png" data-bp="images/portfolio/8.jpg"/>
+            <figcaption>
+              <h4 class="h5 mb-0">App Development</h4>
+              <div>Flutter</div>
+            </figcaption>
+          </figure></a></div>
+    </div>
+  </div>
+</div>
+<div class="section px-3 px-lg-4 pt-5" id="experience">
+  <div class="container-narrow">
+    <div class="text-center mb-5">
+      <h2 class="marker marker-center">Experience</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-3" data-aos="fade-right" data-aos-delay="100">
+          <div class="card-header px-3 py-2">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h3 class="h5 mb-1">UI/UX Design</h3>
+                <div class="text-muted text-small">Designerr Inc. <small>(2012-2014)</small></div>
+              </div><img src="images/services/ui-ux.svg" width="48" height="48" alt="ui-ux"/>
+            </div>
+          </div>
+          <div class="card-body px-3 py-2">
+            <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
+            <p>Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-3" data-aos="fade-left" data-aos-delay="300">
+          <div class="card-header px-3 py-2">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h3 class="h5 mb-1">App Development</h3>
+                <div class="text-muted text-small">MakeMyApp LLC. <small>(2015-2018)</small></div>
+              </div><img src="images/services/app-development.svg" width="48" height="48" alt="app development"/>
+            </div>
+          </div>
+          <div class="card-body px-3 py-2">
+            <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
+            <p>Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-3" data-aos="fade-right" data-aos-delay="200">
+          <div class="card-header px-3 py-2">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h3 class="h5 mb-1">Web Design</h3>
+                <div class="text-muted text-small">Webbie LLC. <small>(2018-2020)</small></div>
+              </div><img src="images/services/web-design.svg" width="48" height="48" alt="web design"/>
+            </div>
+          </div>
+          <div class="card-body px-3 py-2">
+            <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
+            <p>Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-3" data-aos="fade-left" data-aos-delay="400">
+          <div class="card-header px-3 py-2">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h3 class="h5 mb-1">Full Stack Development</h3>
+                <div class="text-muted text-small">Coder Inc. <small>(2020-2021)</small></div>
+              </div><img src="images/services/full-stack.svg" width="48" height="48" alt="full stack"/>
+            </div>
+          </div>
+          <div class="card-body px-3 py-2">
+            <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
+            <p>Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section px-3 px-lg-4 pt-5" id="testimonials">
+  <div class="container-narrow">
+    <div class="text-center mb-5">
+      <h2 class="marker marker-center">Client Testimonials</h2>
+    </div>
+    <div class="row"> 
+      <div class="col-md-6 mb-5" data-aos="fade-right" data-aos-delay="100">
+        <div class="d-flex ms-md-3"><span><i class="fas fa-2x fa-quote-left"></i></span><span class="m-2">Walter displays exemplary professionalism and is able to take on challenges. He learns quickly and is an asset to any team.</span></div>
+        <div class="d-flex justify-content-end align-items-end">
+          <div class="text-end me-2">
+            <div class="fw-bolder">Aiyana</div>
+            <div class="text-small">CEO / Web Design Company</div>
+          </div><img class="me-md-3 rounded" src="images/testimonials/client1.jpg" width="96" height="96" alt="client 1"/>
+        </div>
+      </div>
+      <div class="col-md-6 mb-5" data-aos="fade-left" data-aos-delay="300">
+        <div class="d-flex ms-md-3"><span><i class="fas fa-2x fa-quote-left"></i></span><span class="m-2">Walter displays exemplary professionalism and is able to take on challenges. He learns quickly and is an asset to any team.</span></div>
+        <div class="d-flex justify-content-end align-items-end">
+          <div class="text-end me-2">
+            <div class="fw-bolder">Alexander</div>
+            <div class="text-small">CEO / Web Design Company</div>
+          </div><img class="me-md-3 rounded" src="images/testimonials/client2.jpg" width="96" height="96" alt="client 1"/>
+        </div>
+      </div>
+      <div class="col-md-6 mb-5" data-aos="fade-right" data-aos-delay="200">
+        <div class="d-flex ms-md-3"><span><i class="fas fa-2x fa-quote-left"></i></span><span class="m-2">Walter is a great co-worker and problem solver. He is quick to extend his helping hand and makes a good team player.</span></div>
+        <div class="d-flex justify-content-end align-items-end">
+          <div class="text-end me-2">
+            <div class="fw-bolder">Ariya</div>
+            <div class="text-small">Web Developer</div>
+          </div><img class="me-md-3 rounded" src="images/testimonials/client3.jpg" width="96" height="96" alt="client 1"/>
+        </div>
+      </div>
+      <div class="col-md-6 mb-5" data-aos="fade-left" data-aos-delay="400">
+        <div class="d-flex ms-md-3"><span><i class="fas fa-2x fa-quote-left"></i></span><span class="m-2">Walter is a great co-worker and problem solver. He is quick to extend his helping hand and makes a good team player.</span></div>
+        <div class="d-flex justify-content-end align-items-end">
+          <div class="text-end me-2">
+            <div class="fw-bolder">Braiden</div>
+            <div class="text-small">Web Designer</div>
+          </div><img class="me-md-3 rounded" src="images/testimonials/client4.jpg" width="96" height="96" alt="client 1"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section px-2 px-lg-4 pb-4 pt-5 mb-5" id="contact">
+  <div class="container-narrow">
+    <div class="text-center mb-5">
+      <h2 class="marker marker-center">Contact Me</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="bg-light my-2 p-3 pt-2"><form action="https://formspree.io/your@email.com"
+    method="POST">
+    <div class="form-group my-2">
+      <label for="name" class="form-label fw-bolder">Name</label>
+      <input class="form-control" type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group my-2">
+      <label for="email" class="form-label fw-bolder">Email</label>
+      <input class="form-control" type="email" id="email" name="_replyto" required>
+    </div>
+  <div class="form-group my-2">
+    <label for="message" class="form-label fw-bolder">Message</label>
+    <textarea class="form-control" style="resize: none;" id="message" name="message" rows="4" required></textarea>
+  </div>
+  <button class="btn btn-primary mt-2" type="submit">Send</button>
+</form>
+        </div>
+      </div>
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
+        <div class="mt-3 px-1">
+          <div class="h5">Let’s talk how I can help you!</div>
+          <p>If you like my work and want to avail my services then drop me a message using the contact form. </p>
+          <p>Or get in touch using my email, skype or my contact number.</p>
+          <p>See you!</p>
+        </div>
+        <div class="mt-53 px-1">
+          <div class="row"> 
+            <div class="col-sm-2">
+              <div class="pb-1">Email:</div>
+            </div>
+            <div class="col-sm-10">
+              <div class="pb-1 fw-bolder">walter@company.com</div>
+            </div>
+            <div class="col-sm-2">
+              <div class="pb-1">Skype:</div>
+            </div>
+            <div class="col-sm-10">
+              <div class="pb-1 fw-bolder">username@skype.com</div>
+            </div>
+            <div class="col-sm-2">
+              <div class="pb-1">Phone:</div>
+            </div>
+            <div class="col-sm-10">
+              <div class="pb-1 fw-bolder">+0718-111-0011</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="pt-4 pb-4 text-center bg-light">
+  <div class="container">
+    <div class="my-3">
+      <div class="h4">Walter Patterson</div>
+      <p>Web Developer & Mobile Application Developer</p>
+      <div class="social-nav">
+        <nav role="navigation">
+          <ul class="nav justify-content-center">
+            <li class="nav-item"><a class="nav-link" href="https://twitter.com/templateflip" title="Twitter"><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/templateflip" title="Facebook"><i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/templateflip" title="Instagram"><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/" title="LinkedIn"><i class="fab fa-linkedin"></i><span class="menu-title sr-only">LinkedIn</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.behance.net/templateflip" title="Behance"><i class="fab fa-behance"></i><span class="menu-title sr-only">Behance</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="text-small text-secondary">
+      <div class="mb-1">&copy; Super Folio. All rights reserved.</div>
+      <div>
+        <!-- Make sure to buy a license for the template before removing the line below. Buy license on https://templateflip.com/ -->Design - <a href="https://templateflip.com/" target="_blank">TemplateFlip</a></div>
+    </div>
+  </div>
+</footer></div>
+    </div>
+    <div id="scrolltop"><a class="btn btn-secondary" href="#top"><span class="icon"><i class="fas fa-angle-up fa-x"></i></span></a></div>
+    <script src="./scripts/imagesloaded.pkgd.min.js?ver=1.2.0"></script>
+    <script src="./scripts/masonry.pkgd.min.js?ver=1.2.0"></script>
+    <script src="./scripts/BigPicture.min.js?ver=1.2.0"></script>
+    <script src="./scripts/purecounter.min.js?ver=1.2.0"></script>
+    <script src="./scripts/bootstrap.bundle.min.js?ver=1.2.0"></script>
+    <script src="./scripts/aos.min.js?ver=1.2.0"></script>
+    <script src="./scripts/main.js?ver=1.2.0"></script>
+  </body>
 </html>
